@@ -1,7 +1,8 @@
 require 'test_helper'
 
 class TrackTest < ActiveSupport::TestCase
-  # test "the truth" do
-  #   assert true
-  # end
+  test "can create a track" do
+    track = Track.new(name: "Song 1", album: "Album 1", genre: "pop", year: "2015", popularity: 53)
+    assert_equal track.name, "Song 1"
+  end
 end
