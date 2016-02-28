@@ -11,7 +11,9 @@ class MusicTest < ActiveSupport::TestCase
   test "track can't be created if genre isn't found" do
     music = Music.new(genre: "pop", year: 1990)
     assert music
-    refute music.track
+    assert_equal "1990", music.track.year
+    assert_equal "Thunderstruck", music.track.name
+    refute music.track.id
   end
 
 

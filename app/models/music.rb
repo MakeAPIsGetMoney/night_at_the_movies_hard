@@ -2,17 +2,18 @@ class Music
   attr_reader :track
 
   def initialize(genre: nil, year: nil)
-    @track = Track.where(genre: genre, year: year).first
-    if @track
-      @track
+    track = Track.where(genre: genre, year: year).first
+    if track
+      @track = track
     else
       query = "genre:#{genre} year:#{year}"
       @response = HTTParty.get("https://api.spotify.com/v1/search?q=#{query}&type=track")
       if @response["tracks"]["items"].empty?
         #don't create this in the database
         @response = HTTParty.get("https://api.spotify.com/v1/search?q=year:#{year}&type=track")
+        @track = Track.new(name: popular_track, album: popular_album, artists: popular_artist, popularity: popularity, cover: album_cover, year: year)
       else
-        @track = Track.create!(name: popular_track, album: popular_album, artists: popular_artist, genre: genre, popularity: popularity, cover: album_cover)
+        @track = Track.create!(name: popular_track, album: popular_album, artists: popular_artist, genre: genre, popularity: popularity, cover: album_cover, year: year)
       end
     end
   end
