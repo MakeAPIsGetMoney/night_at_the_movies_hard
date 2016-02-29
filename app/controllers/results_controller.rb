@@ -1,11 +1,10 @@
 class ResultsController < ApplicationController
   def show
-    #update the below line to take :movie instead of :year
-    if params[:genre] == nil || params[:year] == nil
+    if params[:genre] == nil || params[:movie] == nil
       render json: "Please pass in both a movie and a music genre!"
     else
-      #the below line will need to be updated to take in year from the movie object
-      song = Music.new(genre: params[:genre], year: params[:year])
+      @movie = MyFilm.new(params[:movie])
+      song = Music.new(genre: params[:genre], year: @movie.movie.year)
       @track = song.track
     end
   end

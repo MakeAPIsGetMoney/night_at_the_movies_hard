@@ -1,5 +1,5 @@
 class MyFilm
-  attr_reader :success, :title, :year, :directors, :writers, :actors, :runtime, :urlPoster
+  attr_reader :movie, :success
 
   def initialize(movie)
     temp =  Movie.where(title: movie)
@@ -7,7 +7,7 @@ class MyFilm
       response = HTTParty.get("http://api.myapifilms.com/imdb/idIMDB?title=#{movie}&actors=1&token=#{ENV["MYAPIFILMS_KEY"]}")
       @success = !(response["data"]["movies"].empty?)
       if @success
-        @movie = Movie.Create(title: response["data"]["movies"][0]["title"],
+        @movie = Movie.create(title: response["data"]["movies"][0]["title"],
                     year: response["data"]["movies"][0]["year"],
                     runtime: response["data"]["movies"][0]["runtime"][0],
                     url_poster: response["data"]["movies"][0]["urlPoster"],
@@ -18,25 +18,26 @@ class MyFilm
         response["data"]["movies"][0]["actors"].each {|a| @movie.actors << Actor.create(name: a["name"], imdb_id: a["nameId"])}
       end
     else
+      @success = true
       @movie = temp.first
     end
   end
 
   def get_directors_list
     array = []
-    @directors.each {|d| array << d["name"]}
+    @movie.directors.each {|d| array << d["name"]}
     array
   end
 
   def get_actors_name_list
     array = []
-    @actors.each {|a| array << a["actorName"] }
+    @movie.actors.each {|a| array << a["Name"] }
     array
   end
 
   def get_writers_list
     array = []
-    @writers.each {|w| array << w["name"]}
+    @movie.writers.each {|w| array << w["name"]}
     array
   end
 end
