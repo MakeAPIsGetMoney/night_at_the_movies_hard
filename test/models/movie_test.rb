@@ -1,12 +1,17 @@
 require 'test_helper'
 
 class MovieTest < ActiveSupport::TestCase
-  # test "move has many actors" do
+  test "movie has many actors" do
+    m = Movie.create(title: "The Matrix", year: "1999", runtime: "137 min")
+    m.actors << Actor.create(name: "Keanu Reeves")
+    m.actors << Actor.create(name: "Laurence Fishbourne")
+
+    assert_equal 2, m.actors.count
+  end
+
+  # test "movie can assign and access a character" do
   #   m = Movie.create(title: "The Matrix", year: "1999", runtime: "137 min")
   #   m.actors << Actor.create(name: "Keanu Reeves")
-  #   m.actors << Actor.create(name: "Laurence Fishbourne")
-  #
-  #   assert_equal 2, m.actors.count
   # end
 
   test "movie has many directors" do
