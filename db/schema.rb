@@ -11,19 +11,36 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
+<<<<<<< HEAD
 ActiveRecord::Schema.define(version: 20160226205634) do
 
   create_table "actors", force: :cascade do |t|
     t.string   "name"
     t.string   "character"
     t.string   "imdb_id"
+=======
+ActiveRecord::Schema.define(version: 20160227205528) do
+
+  create_table "actor_movies", force: :cascade do |t|
+    t.integer  "movie_id"
+    t.integer  "actor_id"
+    t.string   "character"
+>>>>>>> brian
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+<<<<<<< HEAD
   create_table "actors_movies", id: false, force: :cascade do |t|
     t.integer "movie_id", null: false
     t.integer "actor_id", null: false
+=======
+  create_table "actors", force: :cascade do |t|
+    t.string   "name"
+    t.string   "imdb_id"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+>>>>>>> brian
   end
 
   create_table "directors", force: :cascade do |t|
