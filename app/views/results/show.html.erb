@@ -1,5 +1,6 @@
 <h1>Your Results</h1>
-<p>The movie you searched for was <em><%=  "MOVIE TITLE GOES HERE" %></em>.</p>
-<p>It came out in <strong><%= "MOVIE YEAR GOES HERE" %></strong>.</p>
+<p>The movie you searched for was <em><%= @movie.movie.title %></em>.</p>
+<p>It came out in <strong><%= @movie.movie.year %></strong>.</p>
+<p><img src="<%=@movie.movie.url_poster%>"> </p>
 <p>According to Spotify, the most popular song in that year was <em><%=@track.name%></em> by <%= @track.artists.tr("[", "").tr("]", "").tr('"',"").html_safe %>. It appeared on the <em><%= @track.album %></em> album. </p>
 <p><img src="<%=@track.cover%>"> </p>
