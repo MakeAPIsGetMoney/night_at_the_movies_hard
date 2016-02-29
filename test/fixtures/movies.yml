@@ -1,17 +1,17 @@
-# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
-
-one:
-  title: MyString
-  year: MyString
-  runtime: MyString
-  url_poster: MyString
-  imdb_id: MyString
-  simple_plot: MyText
-
-two:
-  title: MyString
-  year: MyString
-  runtime: MyString
-  url_poster: MyString
-  imdb_id: MyString
-  simple_plot: MyText
+# # Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+#
+# one:
+#   title: MyString
+#   year: MyString
+#   runtime: MyString
+#   url_poster: MyString
+#   imdb_id: MyString
+#   simple_plot: MyText
+#
+# two:
+#   title: MyString
+#   year: MyString
+#   runtime: MyString
+#   url_poster: MyString
+#   imdb_id: MyString
+#   simple_plot: MyText
