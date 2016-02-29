@@ -32,5 +32,27 @@ Sample request: `/api/v1/search/this%20is%20spinal%20tap/pop.json`
 Sample results:
 
 ```
-
+{
+"success": true,
+"results": {
+"movie": {
+"title": "Love Actually",
+"year": "2003",
+"directors": [
+{
+"name": "Richard Curtis"
+}
+],
+},
+"track": {
+"track_id": 19,
+"track_name": "Ignition - Remix",
+"artists": "[\"R. Kelly\"]",
+"album": "Chocolate Factory",
+"spotify_popularity": 59,
+"genre": "pop",
+"album_cover": "https://i.scdn.co/image/45fc1b03c63e3d8d6337b95787833345ba5a26f4"
+}
+}
+}
 ```
